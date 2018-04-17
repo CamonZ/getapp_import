@@ -1,4 +1,4 @@
-defmodule Importer.Backends.SoftwareAdvice do
+defmodule Import.Backends.SoftwareAdvice do
  def process(location) do
  end
 end

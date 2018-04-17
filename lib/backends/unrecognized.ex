@@ -1,3 +1,3 @@
-defmodule Importer.Backends.Unrecognized do
+defmodule Import.Backends.Unrecognized do
  def process(_), do: {:error, :unrecognized_backend_type}
 end

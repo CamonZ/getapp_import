@@ -1,4 +1,4 @@
-defmodule Importer.Backends.Capterra do
+defmodule Import.Backends.Capterra do
  def process(location) do
  end
 end
