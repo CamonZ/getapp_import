@@ -11,7 +11,6 @@ defmodule Import.Backends.Capterra do
   end
 
   defp map_entries_to_softwares(entries) when is_list(entries) do
-
     result = entries
     |> List.flatten()
     |> Enum.map(&to_software(&1))
