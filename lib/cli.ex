@@ -1,6 +1,6 @@
 defmodule Import.CLI do
 
-  alias Import.{CommandLineParser, BackendDelegator, StateToken}
+  alias Import.{CommandLineParser, BackendDelegator, StateToken, BackendsRegistrator}
 
   def main(argv) do
     %StateToken{}
