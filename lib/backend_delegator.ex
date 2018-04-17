@@ -1,12 +1,12 @@
 defmodule Import.BackendDelegator do
-  alias Import.CLI
+  alias Import.StateToken
 
-  def process_options(%CLI{errors: errors} = token) when errors != [] do
+  def process_options(%StateToken{errors: errors} = token) when errors != [] do
     token
   end
 
-  def process_options(%CLI{importer: importer, location: location} = token) do
-    case importer_module(importer).process(location) do
+  def process_options(%StateToken{selected_backend: backend, data_location: location} = token) do
+    case importer_module(backend).process(location) do
       {:ok, softwares} -> Map.put(token, :softwares, softwares)
       {:error, reason} -> Map.put(token, :errors, [{:error, reason}])
     end

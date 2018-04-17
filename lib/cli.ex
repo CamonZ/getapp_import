@@ -1,11 +1,9 @@
 defmodule Import.CLI do
-  defstruct softwares: [], errors: [], importer: nil, location: nil
 
-  alias Import.{CommandLineParser, BackendDelegator}
-  alias __MODULE__
+  alias Import.{CommandLineParser, BackendDelegator, StateToken}
 
   def main(argv) do
-    %CLI{}
+    %StateToken{}
     |> CommandLineParser.parse(argv)
     |> BackendDelegator.process_options()
   end

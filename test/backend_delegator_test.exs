@@ -2,19 +2,19 @@ defmodule BackendDelegatorTest do
   use ExUnit.Case
   doctest Import.BackendDelegator
 
-  alias Import.{BackendDelegator, CLI}
+  alias Import.{BackendDelegator, StateToken}
 
   describe "process_options/1" do
     test "Returns the state token without any changes when there are errors present" do
-      token = %CLI{errors: [{:error, :unrecognized_arguments_type}]}
+      token = %StateToken{errors: [{:error, :unrecognized_arguments_type}]}
 
       assert token == BackendDelegator.process_options(token)
     end
 
     test "Sets the specific backend errors when there's errors processing data for a backend or a backend is unrecognized" do
-      token = %CLI{importer: "foobar", location: "bazquux"}
+      token = %StateToken{selected_backend: "foobar", data_location: "bazquux"}
 
-      %CLI{errors: errors, softwares: []} = BackendDelegator.process_options(token)
+      %StateToken{errors: errors, softwares: []} = BackendDelegator.process_options(token)
 
       assert [{:error, :unrecognized_backend_type}] == errors
     end
