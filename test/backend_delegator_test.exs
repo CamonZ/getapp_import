@@ -2,7 +2,7 @@ defmodule BackendDelegatorTest do
   use ExUnit.Case
   doctest Import.BackendDelegator
 
-  alias Import.{BackendDelegator, StateToken}
+  alias Import.{BackendsRegistrator, BackendDelegator, StateToken}
 
   describe "process_options/1" do
     test "Returns the state token without any changes when there are errors present" do
@@ -12,7 +12,7 @@ defmodule BackendDelegatorTest do
     end
 
     test "Sets the specific backend errors when there's errors processing data for a backend or a backend is unrecognized" do
-      token = %StateToken{selected_backend: "foobar", data_location: "bazquux"}
+      token = %StateToken{selected_backend: "foobar", data_location: "bazquux"} |> BackendsRegistrator.get_backends()
 
       %StateToken{errors: errors, softwares: []} = BackendDelegator.process_options(token)
 
