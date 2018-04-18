@@ -10,8 +10,8 @@ defmodule Import.DataInserter do
     Map.put(token, :softwares, imported)
   end
 
-  # On this function is where we would build each changeset and insert on the Repo
-  # or batch insert multiple changesets
+  # On this function is where we would build each changeset
+  # so they can be inserted one by one or batch inserted on the Repo
   defp do_import(software) do
     {:ok, software}
   end
